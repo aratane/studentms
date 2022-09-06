@@ -7,7 +7,7 @@ include('includes/dbconnection.php');
 <html>
 
 <head>
-  <title>Student Management System || Home Page</title>
+  <title>Student Management System || Home </title>
   <script type="application/x-javascript">
     addEventListener("load", function() {
       setTimeout(hideURLbar, 0);
