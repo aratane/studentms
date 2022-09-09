@@ -108,7 +108,6 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
                                                                 <td><?php echo htmlentities($cnt); ?></td>
                                                                 <td><?php echo htmlentities($row->TeacID); ?></td>
-
                                                                 <td><?php echo htmlentities($row->TeacherName); ?></td>
                                                                 <td><?php echo htmlentities($row->TeacherEmail); ?></td>
                                                                 <td><?php echo htmlentities($row->DateofAdmission); ?></td>

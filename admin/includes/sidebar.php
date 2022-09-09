@@ -62,14 +62,26 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
         <span class="menu-title">Teacher</span>
         <i class="icon-people menu-icon"></i>
       </a>
-      <div class="collapse" id="ui-basic1">
+      <div class="collapse" id="ui-basic2">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="add-teacher.php">Add Teacher</a></li>
           <li class="nav-item"> <a class="nav-link" href="manage-teacher.php">Manage Teacher</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+        <span class="menu-title">attendance</span>
+        <i class="icon-create menu-icon"></i>
+      </a>
+      <div class="collapse" id="ui-basic3">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="attendance-teacher.php"> Teacher</a></li>
+          <li class="nav-item"> <a class="nav-link" href="attendance-students.php">students</a></li>
         </ul>
       </div>
     </li>

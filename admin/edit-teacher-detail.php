@@ -69,7 +69,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Update Students</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Update Teacher</li>
                                 </ol>
                             </nav>
                         </div>
