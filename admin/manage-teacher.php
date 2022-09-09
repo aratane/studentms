@@ -16,13 +16,12 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         echo "<script>window.location.href = 'manage-teacher.php'</script>";
     }
 ?>
-    ?>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
 
-        <title>Student Management System|||Manage Students</title>
+        <title>Student Management System|||Manage Teacher</title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -72,7 +71,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th class="font-weight-bold">S.No</th>
+                                                        <th class="font-weight-bold">No</th>
                                                         <th class="font-weight-bold">Teacher ID</th>
                                                         <th class="font-weight-bold">Teacher Name</th>
                                                         <th class="font-weight-bold">Teacher Email</th>
@@ -97,7 +96,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                     $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
                                                     $total_rows = $query1->rowCount();
                                                     $total_pages = ceil($total_rows / $no_of_records_per_page);
-                                                    $sql = "SELECT tblteacher.TeachID,tblteacher.ID as sid,tblteacher.TeachertName,tblteacher.TeacherEmail,tblteacher.DateofAdmission LIMIT $offset, $no_of_records_per_page";
+                                                    $sql = "SELECT tblteacher.TeacID,tblteacher.ID as sid,tblteacher.TeachertName,tblteacher.TeacherEmail,tblteacher.DateofAdmission LIMIT $offset, $no_of_records_per_page";
                                                     $query = $dbh->prepare($sql);
                                                     $query->execute();
                                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -108,7 +107,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                             <tr>
 
                                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                                <td><?php echo htmlentities($row->TeachID); ?></td>
+                                                                <td><?php echo htmlentities($row->TeacID); ?></td>
 
                                                                 <td><?php echo htmlentities($row->TeacherName); ?></td>
                                                                 <td><?php echo htmlentities($row->TeacherEmail); ?></td>

@@ -137,7 +137,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                 <input type="text" name="teacid" value="" class="form-control" required='true'>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputName1">Student Photo</label>
+                                                <label for="exampleInputName1">Teacher Photo</label>
                                                 <input type="file" name="image" value="" class="form-control" required='true'>
                                             </div>
                                             <h3>Parents/Guardian's details</h3>
