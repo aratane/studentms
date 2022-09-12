@@ -96,7 +96,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                     $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
                                                     $total_rows = $query1->rowCount();
                                                     $total_pages = ceil($total_rows / $no_of_records_per_page);
-                                                    $sql = "SELECT tblteacher.TeacID,tblteacher.ID as sid,tblteacher.TeachertName,tblteacher.TeacherEmail,tblteacher.DateofAdmission LIMIT $offset, $no_of_records_per_page";
+                                                    $sql = "SELECT tblteacher.TeacID,tblteacher.ID as tid,tblteacher.TeachertName,tblteacher.TeacherEmail,tblteacher.DateofAdmission LIMIT $offset, $no_of_records_per_page";
                                                     $query = $dbh->prepare($sql);
                                                     $query->execute();
                                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -112,8 +112,8 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                                 <td><?php echo htmlentities($row->TeacherEmail); ?></td>
                                                                 <td><?php echo htmlentities($row->DateofAdmission); ?></td>
                                                                 <td>
-                                                                    <div><a href="edit-teacher-detail.php?editid=<?php echo htmlentities($row->sid); ?>"><i class="icon-eye"></i></a>
-                                                                        || <a href="manage-teacher.php?delid=<?php echo ($row->sid); ?>" onclick="return confirm('Do you really want to Delete ?');"> <i class="icon-trash"></i></a></div>
+                                                                    <div><a href="edit-teacher-detail.php?editid=<?php echo htmlentities($row->tid); ?>"><i class="icon-eye"></i></a>
+                                                                        || <a href="manage-teacher.php?delid=<?php echo ($row->tid); ?>" onclick="return confirm('Do you really want to Delete ?');"> <i class="icon-trash"></i></a></div>
                                                                 </td>
                                                             </tr><?php $cnt = $cnt + 1;
                                                                 }
