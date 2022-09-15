@@ -2,16 +2,17 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['sturecmsaid']==0)) {
+if (strlen($_SESSION['sturecmsaid'] == 0)) {
   header('location:logout.php');
-  } else{
-  
-  ?>
-<!DOCTYPE html>
-<html lang="en">
+} else {
+
+?>
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
-   
-    <title>Student  Management System|| Between Dates Reports</title>
+
+    <title>Student Management System|| Between Dates Reports</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -25,16 +26,17 @@ if (strlen($_SESSION['sturecmsaid']==0)) {
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/style.css" />
-    
+
   </head>
+
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
-     <?php include_once('includes/header.php');?>
+      <?php include_once('includes/header.php'); ?>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-      <?php include_once('includes/sidebar.php');?>
+        <?php include_once('includes/sidebar.php'); ?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -48,24 +50,24 @@ if (strlen($_SESSION['sturecmsaid']==0)) {
               </nav>
             </div>
             <div class="row">
-          
+
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title" style="text-align: center;">Between Dates Reports</h4>
-                   
+
                     <form class="forms-sample" method="post" action="between-date-reprtsdetails.php">
-                      
+
                       <div class="form-group">
                         <label for="exampleInputName1">From Date:</label>
                         <input type="date" class="form-control" id="fromdate" name="fromdate" value="" required='true'>
                       </div>
-                     <div class="form-group">
+                      <div class="form-group">
                         <label for="exampleInputName1">To Date:</label>
                         <input type="date" class="form-control" id="todate" name="todate" value="" required='true'>
                       </div>
                       <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
-                     
+
                     </form>
                   </div>
                 </div>
@@ -74,7 +76,7 @@ if (strlen($_SESSION['sturecmsaid']==0)) {
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-         <?php include_once('includes/footer.php');?>
+          <?php include_once('includes/footer.php'); ?>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -98,4 +100,5 @@ if (strlen($_SESSION['sturecmsaid']==0)) {
     <script src="js/select2.js"></script>
     <!-- End custom js for this page -->
   </body>
-</html><?php }  ?>
+
+  </html><?php }  ?>
