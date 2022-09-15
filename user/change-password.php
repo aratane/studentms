@@ -3,41 +3,39 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-if (strlen($_SESSION['sturecmsstuid']==0)) {
+if (strlen($_SESSION['sturecmsstuid'] == 0)) {
   header('location:logout.php');
-  } else{
-if(isset($_POST['submit']))
-{
-$sid=$_SESSION['sturecmsstuid'];
-$cpassword=md5($_POST['currentpassword']);
-$newpassword=md5($_POST['newpassword']);
-$sql ="SELECT StuID FROM tblstudent WHERE StuID=:sid and Password=:cpassword";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':sid', $sid, PDO::PARAM_STR);
-$query-> bindParam(':cpassword', $cpassword, PDO::PARAM_STR);
-$query-> execute();
-$results = $query -> fetchAll(PDO::FETCH_OBJ);
-
-if($query -> rowCount() > 0)
-{
-$con="update tblstudent set Password=:newpassword where StuID=:sid";
-$chngpwd1 = $dbh->prepare($con);
-$chngpwd1-> bindParam(':sid', $sid, PDO::PARAM_STR);
-$chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-$chngpwd1->execute();
-
-echo '<script>alert("Your password successully changed")</script>';
 } else {
-echo '<script>alert("Your current password is wrong")</script>';
+  if (isset($_POST['submit'])) {
+    $sid = $_SESSION['sturecmsstuid'];
+    $cpassword = md5($_POST['currentpassword']);
+    $newpassword = md5($_POST['newpassword']);
+    $sql = "SELECT StuID FROM tblstudent WHERE StuID=:sid and Password=:cpassword";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':sid', $sid, PDO::PARAM_STR);
+    $query->bindParam(':cpassword', $cpassword, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-}
-}
-  ?>
-<!DOCTYPE html>
-<html lang="en">
+    if ($query->rowCount() > 0) {
+      $con = "update tblstudent set Password=:newpassword where StuID=:sid";
+      $chngpwd1 = $dbh->prepare($con);
+      $chngpwd1->bindParam(':sid', $sid, PDO::PARAM_STR);
+      $chngpwd1->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+      $chngpwd1->execute();
+
+      echo '<script>alert("Your password successully changed")</script>';
+    } else {
+      echo '<script>alert("Your current password is wrong")</script>';
+    }
+  }
+?>
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
-   
-    <title>Student  Management System|| Student Change Password</title>
+
+    <title>Ganti Password</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -52,63 +50,61 @@ echo '<script>alert("Your current password is wrong")</script>';
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/style.css" />
     <script type="text/javascript">
-function checkpass()
-{
-if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
-{
-alert('New Password and Confirm Password field does not match');
-document.changepassword.confirmpassword.focus();
-return false;
-}
-return true;
-}   
-
-</script>
+      function checkpass() {
+        if (document.changepassword.newpassword.value != document.changepassword.confirmpassword.value) {
+          alert('Kata Sandi Baru dan Konfirmasi Kata Sandi tidak cocok');
+          document.changepassword.confirmpassword.focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
   </head>
+
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
-     <?php include_once('includes/header.php');?>
+      <?php include_once('includes/header.php'); ?>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-      <?php include_once('includes/sidebar.php');?>
+        <?php include_once('includes/sidebar.php'); ?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Change Password </h3>
+              <h3 class="page-title"> Ganti Password </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+                  <li class="breadcrumb-item active" aria-current="page">Ganti Password</li>
                 </ol>
               </nav>
             </div>
             <div class="row">
-          
+
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Change Password</h4>
-                   
+                    <h4 class="card-title" style="text-align: center;">Ganti Password</h4>
+
                     <form class="forms-sample" name="changepassword" method="post" onsubmit="return checkpass();">
-                      
+
                       <div class="form-group">
-                        <label for="exampleInputName1">Current Password</label>
+                        <label for="exampleInputName1">Password Saat Ini</label>
                         <input type="password" name="currentpassword" id="currentpassword" class="form-control" required="true">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">New Password</label>
-                        <input type="password" name="newpassword"  class="form-control" required="true">
+                        <label for="exampleInputEmail3">Password Baru</label>
+                        <input type="password" name="newpassword" class="form-control" required="true">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword4">Confirm Password</label>
-                        <input type="password" name="confirmpassword" id="confirmpassword" value=""  class="form-control" required="true">
+                        <label for="exampleInputPassword4">Ulangi Password</label>
+                        <input type="password" name="confirmpassword" id="confirmpassword" value="" class="form-control" required="true">
                       </div>
-                      
-                      <button type="submit" class="btn btn-primary mr-2" name="submit">Change</button>
-                     
+
+                      <button type="submit" class="btn btn-primary mr-2" name="submit">Ubah</button>
+
                     </form>
                   </div>
                 </div>
@@ -117,7 +113,7 @@ return true;
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-         <?php include_once('includes/footer.php');?>
+          <?php include_once('includes/footer.php'); ?>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -141,4 +137,5 @@ return true;
     <script src="js/select2.js"></script>
     <!-- End custom js for this page -->
   </body>
-</html><?php }  ?>
+
+  </html><?php }  ?>

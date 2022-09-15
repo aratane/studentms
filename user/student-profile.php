@@ -12,7 +12,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|| View Students Profile</title>
+    <title>Profil Siswa</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -41,11 +41,11 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> View Students Profile </h3>
+              <h3 class="page-title"> Profil Siswa</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> View Students Profile</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Lihat Profil Siswa</li>
                 </ol>
               </nav>
             </div>
@@ -68,49 +68,49 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                         foreach ($results as $row) {               ?>
                           <tr align="center" class="table-warning">
                             <td colspan="4" style="font-size:20px;color:blue">
-                              Students Details</td>
+                              Detail Siswa</td>
                           </tr>
 
                           <tr class="table-info">
-                            <th>Student Name</th>
+                            <th>Nama Siswa</th>
                             <td><?php echo $row->StudentName; ?></td>
-                            <th>Student Email</th>
+                            <th>Email Siswa</th>
                             <td><?php echo $row->StudentEmail; ?></td>
                           </tr>
                           <tr class="table-warning">
-                            <th>Student Class</th>
+                            <th>Kelas</th>
                             <td><?php echo $row->ClassName; ?> <?php echo $row->Section; ?></td>
-                            <th>Gender</th>
+                            <th>Jenis Kelamin</th>
                             <td><?php echo $row->Gender; ?></td>
                           </tr>
                           <tr class="table-danger">
-                            <th>Date of Birth</th>
+                            <th>Tanggal Lahir</th>
                             <td><?php echo $row->DOB; ?></td>
-                            <th>Student ID</th>
+                            <th>NIS / NISN</th>
                             <td><?php echo $row->StuID; ?></td>
                           </tr>
                           <tr class="table-success">
-                            <th>Father Name</th>
+                            <th>Nama Ayah</th>
                             <td><?php echo $row->FatherName; ?></td>
-                            <th>Mother Name</th>
+                            <th>Nama Ibu</th>
                             <td><?php echo $row->MotherName; ?></td>
                           </tr>
                           <tr class="table-primary">
-                            <th>Contact Number</th>
+                            <th>Nomor Telepon</th>
                             <td><?php echo $row->ContactNumber; ?></td>
-                            <th>Altenate Number</th>
+                            <th>Nomor Alternatif</th>
                             <td><?php echo $row->AltenateNumber; ?></td>
                           </tr>
                           <tr class="table-progress">
-                            <th>Address</th>
+                            <th>Alamat</th>
                             <td><?php echo $row->Address; ?></td>
-                            <th>User Name</th>
+                            <th>Username</th>
                             <td><?php echo $row->UserName; ?></td>
                           </tr>
                           <tr class="table-info">
-                            <th>Profile Pics</th>
+                            <th>Gambar Profil</th>
                             <td><img src="../admin/images/<?php echo $row->Image; ?>"></td>
-                            <th>Date of Admission</th>
+                            <th>Tanggal Mendaftar</th>
                             <td><?php echo $row->DateofAdmission; ?></td>
                           </tr>
                       <?php $cnt = $cnt + 1;
