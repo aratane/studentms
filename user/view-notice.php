@@ -2,16 +2,17 @@
 session_start();
 //error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['sturecmsstuid']==0)) {
+if (strlen($_SESSION['sturecmsstuid'] == 0)) {
   header('location:logout.php');
-  } else{
-   
-  ?>
-<!DOCTYPE html>
-<html lang="en">
+} else {
+
+?>
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
-   
-    <title>Student  Management System|| View Notice</title>
+
+    <title>Pengumuman</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -25,70 +26,72 @@ if (strlen($_SESSION['sturecmsstuid']==0)) {
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/style.css" />
-    
+
   </head>
+
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
-     <?php include_once('includes/header.php');?>
+      <?php include_once('includes/header.php'); ?>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-      <?php include_once('includes/sidebar.php');?>
+        <?php include_once('includes/sidebar.php'); ?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> View Notice </h3>
+              <h3 class="page-title"> Pengumuman </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> View Notice</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Pengumuman</li>
                 </ol>
               </nav>
             </div>
             <div class="row">
-          
+
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    
+
                     <table border="1" class="table table-bordered mg-b-0">
                       <?php
-$stuclass=$_SESSION['stuclass'];
-$sql="SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.NoticeTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.NoticeMsg,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId where tblnotice.ClassId=:stuclass";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':stuclass',$stuclass,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
- <tr align="center" class="table-warning">
-<td colspan="4" style="font-size:20px;color:blue">
- Notice</td></tr>
-<tr class="table-info">
-    <th>Notice Announced Date</th>
-    <td><?php  echo $row->CreationDate;?></td>
-  </tr>
-    <tr class="table-info">
-    <th>Noitice Title</th>
-    <td><?php  echo $row->NoticeTitle;?></td>
-  </tr>
-  <tr class="table-info">
-     <th>Message</th>
-    <td><?php  echo $row->NoticeMsg;?></td>
-     
-  </tr>
-  
-  <?php $cnt=$cnt+1;}} else { ?>
-<tr>
-  <th colspan="2" style="color:red;">No Notice Found</th>
-</tr>
-  <?php } ?>
-</table>
+                      $stuclass = $_SESSION['stuclass'];
+                      $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.NoticeTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.NoticeMsg,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId where tblnotice.ClassId=:stuclass";
+                      $query = $dbh->prepare($sql);
+                      $query->bindParam(':stuclass', $stuclass, PDO::PARAM_STR);
+                      $query->execute();
+                      $results = $query->fetchAll(PDO::FETCH_OBJ);
+                      $cnt = 1;
+                      if ($query->rowCount() > 0) {
+                        foreach ($results as $row) {               ?>
+                          <tr align="center" class="table-warning">
+                            <td colspan="4" style="font-size:20px;color:blue">
+                              Pengumuman</td>
+                          </tr>
+                          <tr class="table-info">
+                            <th>Tanggal Diumumkan</th>
+                            <td><?php echo $row->CreationDate; ?></td>
+                          </tr>
+                          <tr class="table-info">
+                            <th>Judul Pengumuman</th>
+                            <td><?php echo $row->NoticeTitle; ?></td>
+                          </tr>
+                          <tr class="table-info">
+                            <th>Pesan</th>
+                            <td><?php echo $row->NoticeMsg; ?></td>
+
+                          </tr>
+
+                        <?php $cnt = $cnt + 1;
+                        }
+                      } else { ?>
+                        <tr>
+                          <th colspan="2" style="color:red;">No Notice Found</th>
+                        </tr>
+                      <?php } ?>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -96,7 +99,7 @@ foreach($results as $row)
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-         <?php include_once('includes/footer.php');?>
+          <?php include_once('includes/footer.php'); ?>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -120,4 +123,5 @@ foreach($results as $row)
     <script src="js/select2.js"></script>
     <!-- End custom js for this page -->
   </body>
-</html><?php }  ?>
+
+  </html><?php }  ?>
