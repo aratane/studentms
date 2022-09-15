@@ -1,7 +1,7 @@
  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
    <div class="navbar-brand-wrapper d-flex align-items-center">
      <a class="navbar-brand brand-logo" href="dashboard.php">
-       <strong style="color: white;">SMS</strong>
+       <strong style="color: white;">ISM</strong>
      </a>
 
    </div>
@@ -18,7 +18,7 @@
     if ($query->rowCount() > 0) {
       foreach ($results as $row) {               ?>
        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-         <h5 class="mb-0 font-weight-medium d-none d-lg-flex"><?php echo htmlentities($row->StudentName); ?> Welcome to dashboard!</h5>
+         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->StudentName); ?> Selamat datang di ISM!</h5>
          <ul class="navbar-nav navbar-nav-right ml-auto">
 
 
