@@ -63,12 +63,10 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               </nav>
             </div>
             <div class="row">
-
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title" style="text-align: center;">Data Pengelolaan Kelas</h4>
-
                     <form class="forms-sample" method="post">
                       <?php
                       $eid = $_GET['editid'];
