@@ -24,9 +24,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
       $chngpwd1->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
       $chngpwd1->execute();
 
-      echo '<script>alert("Your password successully changed")</script>';
+      echo '<script>alert("Password Berhasil Diubah.")</script>';
     } else {
-      echo '<script>alert("Your current password is wrong")</script>';
+      echo '<script>alert("Password Kamu Saat Ini Salah.")</script>';
     }
   }
 ?>
@@ -35,7 +35,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|| Change Password</title>
+    <title>Ubah Password</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -52,7 +52,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     <script type="text/javascript">
       function checkpass() {
         if (document.changepassword.newpassword.value != document.changepassword.confirmpassword.value) {
-          alert('New Password and Confirm Password field does not match');
+          alert('Password Baru dan Password Konfirmasi Tidak Sama.');
           document.changepassword.confirmpassword.focus();
           return false;
         }
@@ -73,11 +73,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Change Password </h3>
+              <h3 class="page-title"> Ubah Password </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+                  <li class="breadcrumb-item active" aria-current="page">Ubah Password</li>
                 </ol>
               </nav>
             </div>
@@ -86,24 +86,24 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Change Password</h4>
+                    <h4 class="card-title" style="text-align: center;">Data Password</h4>
 
                     <form class="forms-sample" name="changepassword" method="post" onsubmit="return checkpass();">
 
                       <div class="form-group">
-                        <label for="exampleInputName1">Current Password</label>
+                        <label for="exampleInputName1">Password Saat Ini</label>
                         <input type="password" name="currentpassword" id="currentpassword" class="form-control" required="true">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">New Password</label>
+                        <label for="exampleInputEmail3">Password Baru</label>
                         <input type="password" name="newpassword" class="form-control" required="true">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword4">Confirm Password</label>
+                        <label for="exampleInputPassword4">Konfirmasi Password</label>
                         <input type="password" name="confirmpassword" id="confirmpassword" value="" class="form-control" required="true">
                       </div>
 
-                      <button type="submit" class="btn btn-primary mr-2" name="submit">Change</button>
+                      <button type="submit" class="btn btn-primary mr-2" name="submit">Ubah</button>
 
                     </form>
                   </div>
