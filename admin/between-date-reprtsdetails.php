@@ -12,7 +12,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $query = $dbh->prepare($sql);
     $query->bindParam(':rid', $rid, PDO::PARAM_STR);
     $query->execute();
-    echo "<script>alert('Data deleted');</script>";
+    echo "<script>alert('Data Dihapus');</script>";
     echo "<script>window.location.href = 'manage-students.php'</script>";
   }
 ?>
@@ -21,7 +21,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|||Between Dates Reports</title>
+    <title>Laporan Sesuai Tanggal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -51,11 +51,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Between Dates Reports </h3>
+              <h3 class="page-title"> Laporan Sesuai Tanggal </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Between Dates Reports</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Laporan</li>
                 </ol>
               </nav>
             </div>
@@ -69,20 +69,20 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                       $tdate = $_POST['todate'];
 
                       ?>
-                      <h5 align="center" style="color:blue">Report from <?php echo $fdate ?> to <?php echo $tdate ?></h5>
+                      <h5 align="center" style="color:blue">Laporan Dari <?php echo $fdate ?> sampai <?php echo $tdate ?></h5>
                     </div>
                     <div class="table-responsive border rounded p-1">
 
                       <table class="table">
                         <thead>
                           <tr>
-                            <th class="font-weight-bold">S.No</th>
-                            <th class="font-weight-bold">Student ID</th>
-                            <th class="font-weight-bold">Student Class</th>
-                            <th class="font-weight-bold">Student Name</th>
-                            <th class="font-weight-bold">Student Email</th>
-                            <th class="font-weight-bold">Admissin Date</th>
-                            <th class="font-weight-bold">Action</th>
+                            <th class="font-weight-bold">Nomor</th>
+                            <th class="font-weight-bold">NIS</th>
+                            <th class="font-weight-bold">Kelas</th>
+                            <th class="font-weight-bold">Nama Siswa</th>
+                            <th class="font-weight-bold">Email Siswa</th>
+                            <th class="font-weight-bold">Tanggal Daftar</th>
+                            <th class="font-weight-bold">Aksi</th>
 
                           </tr>
                         </thead>
@@ -121,7 +121,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                 <td><?php echo htmlentities($row->DateofAdmission); ?></td>
                                 <td>
                                   <div><a href="edit-student-detail.php?editid=<?php echo htmlentities($row->sid); ?>"><i class="icon-eye"></i></a>
-                                    || <a href="manage-students.php?delid=<?php echo ($row->sid); ?>" onclick="return confirm('Do you really want to Delete ?');"> <i class="icon-trash"></i></a></div>
+                                    || <a href="manage-students.php?delid=<?php echo ($row->sid); ?>" onclick="return confirm('Apakah kamu yakin menghapus data yang dipilih?');"> <i class="icon-trash"></i></a></div>
                                 </td>
                               </tr><?php $cnt = $cnt + 1;
                                   }
@@ -131,7 +131,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                     </div>
                     <div align="left">
                       <ul class="pagination">
-                        <li><a href="?pageno=1"><strong>First></strong></a></li>
+                        <li><a href="?pageno=1"><strong>Pertama></strong></a></li>
                         <li class="<?php if ($pageno <= 1) {
                                       echo 'disabled';
                                     } ?>">
@@ -139,7 +139,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                       echo '#';
                                     } else {
                                       echo "?pageno=" . ($pageno - 1);
-                                    } ?>"><strong style="padding-left: 10px">Prev></strong></a>
+                                    } ?>"><strong style="padding-left: 10px">Sebelumnya></strong></a>
                         </li>
                         <li class="<?php if ($pageno >= $total_pages) {
                                       echo 'disabled';
@@ -148,9 +148,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                       echo '#';
                                     } else {
                                       echo "?pageno=" . ($pageno + 1);
-                                    } ?>"><strong style="padding-left: 10px">Next></strong></a>
+                                    } ?>"><strong style="padding-left: 10px">Selanjutnya></strong></a>
                         </li>
-                        <li><a href="?pageno=<?php echo $total_pages; ?>"><strong style="padding-left: 10px">Last</strong></a></li>
+                        <li><a href="?pageno=<?php echo $total_pages; ?>"><strong style="padding-left: 10px">Terakhir></strong></a></li>
                       </ul>
                     </div>
                   </div>
