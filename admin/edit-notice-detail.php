@@ -79,7 +79,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                       $results = $query->fetchAll(PDO::FETCH_OBJ);
                       $cnt = 1;
                       if ($query->rowCount() > 0) {
-                        foreach ($results as $row) {               ?>
+                        foreach ($results as $row) { ?>
                           <div class="form-group">
                             <label for="exampleInputName1">Judul Pengumuman</label>
                             <input type="text" name="nottitle" value="<?php echo htmlentities($row->NoticeTitle); ?>" class="form-control" required='true'>
@@ -90,12 +90,10 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                             <select name="classid" class="form-control">
                               <option value="<?php echo htmlentities($row->ClassId); ?>"><?php echo htmlentities($row->ClassName); ?><?php echo htmlentities($row->Section); ?></option>
                               <?php
-
                               $sql2 = "SELECT * from tblclass ";
                               $query2 = $dbh->prepare($sql2);
                               $query2->execute();
                               $result2 = $query2->fetchAll(PDO::FETCH_OBJ);
-
                               foreach ($result2 as $row1) {
                               ?>
                                 <option value="<?php echo htmlentities($row1->ID); ?>"><?php echo htmlentities($row1->ClassName); ?> <?php echo htmlentities($row1->Section); ?></option>
