@@ -21,7 +21,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Laporan Sesuai Tanggal</title>
+    <title>Data Sesuai Tanggal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -51,7 +51,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Laporan Sesuai Tanggal </h3>
+              <h3 class="page-title"> Data Sesuai Tanggal </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>

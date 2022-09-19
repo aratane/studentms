@@ -12,7 +12,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|| Between Dates Reports</title>
+    <title>Data Sesuai Tanggal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -41,11 +41,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Between Dates Reports </h3>
+              <h3 class="page-title"> Data Sesuai Tanggal </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Between Dates Reports</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Laporan</li>
                 </ol>
               </nav>
             </div>
@@ -54,19 +54,19 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Between Dates Reports</h4>
+                    <h4 class="card-title" style="text-align: center;">Data Sesuai Tanggal</h4>
 
                     <form class="forms-sample" method="post" action="between-date-reprtsdetails.php">
 
                       <div class="form-group">
-                        <label for="exampleInputName1">From Date:</label>
+                        <label for="exampleInputName1">Dari Tanggal:</label>
                         <input type="date" class="form-control" id="fromdate" name="fromdate" value="" required='true'>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">To Date:</label>
+                        <label for="exampleInputName1">Sampai Tanggal:</label>
                         <input type="date" class="form-control" id="todate" name="todate" value="" required='true'>
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
+                      <button type="submit" class="btn btn-primary mr-2" name="submit">Cari</button>
 
                     </form>
                   </div>
