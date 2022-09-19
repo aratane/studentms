@@ -16,7 +16,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $query->bindParam(':section', $section, PDO::PARAM_STR);
     $query->bindParam(':eid', $eid, PDO::PARAM_STR);
     $query->execute();
-    echo '<script>alert("Class has been updated")</script>';
+    echo '<script>alert("Kelas Berhasil Di Update")</script>';
   }
 
 ?>
@@ -25,7 +25,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|| Manage Class</title>
+    <title>Kelola Kelas</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -54,11 +54,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Manage Class </h3>
+              <h3 class="page-title"> Kelola Kelas </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Manage Class</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Kelola Kelas</li>
                 </ol>
               </nav>
             </div>
@@ -67,7 +67,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Manage Class</h4>
+                    <h4 class="card-title" style="text-align: center;">Data Pengelolaan Kelas</h4>
 
                     <form class="forms-sample" method="post">
                       <?php
@@ -80,25 +80,20 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                       if ($query->rowCount() > 0) {
                         foreach ($results as $row) {               ?>
                           <div class="form-group">
-                            <label for="exampleInputName1">Class Name</label>
+                            <label for="exampleInputName1">Nama Kelas</label>
                             <input type="text" name="cname" value="<?php echo htmlentities($row->ClassName); ?>" class="form-control" required='true'>
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputEmail3">Section</label>
+                            <label for="exampleInputEmail3">Bagian</label>
                             <select name="section" class="form-control" required='true'>
                               <option value="<?php echo htmlentities($row->Section); ?>"><?php echo htmlentities($row->Section); ?></option>
-                              <option value="A">A</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="D">D</option>
-                              <option value="E">E</option>
-                              <option value="F">F</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
                             </select>
                           </div><?php $cnt = $cnt + 1;
                               }
                             } ?>
                       <button type="submit" class="btn btn-primary mr-2" name="submit">Update</button>
-
                     </form>
                   </div>
                 </div>
