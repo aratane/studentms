@@ -12,7 +12,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|||Dashboard</title>
+    <title>Dashboard</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -48,7 +48,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                     <div class="row">
                       <div class="col-md-12">
                         <div class="d-sm-flex align-items-baseline report-summary-header">
-                          <h5 class="font-weight-semibold">Report Summary</h5> <span class="ml-auto">Updated Report</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
+                          <h5 class="font-weight-semibold">Ringkasan Laporan</h5> <span class="ml-auto">Updated Laporan</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
                         </div>
                       </div>
                     </div>
@@ -62,9 +62,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
                           $totclass = $query1->rowCount();
                           ?>
-                          <span class="report-title">Total Class</span>
+                          <span class="report-title">Total Kelas</span>
                           <h4><?php echo htmlentities($totclass); ?></h4>
-                          <a href="manage-class.php"><span class="report-count"> View Classes</span></a>
+                          <a href="manage-class.php"><span class="report-count"> Lihat Kelas</span></a>
                         </div>
                         <div class="inner-card-icon bg-success">
                           <i class="icon-rocket"></i>
@@ -79,9 +79,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results2 = $query2->fetchAll(PDO::FETCH_OBJ);
                           $totstu = $query2->rowCount();
                           ?>
-                          <span class="report-title">Total Students</span>
+                          <span class="report-title">Total Siswa/i</span>
                           <h4><?php echo htmlentities($totstu); ?></h4>
-                          <a href="manage-students.php"><span class="report-count"> View Students</span></a>
+                          <a href="manage-students.php"><span class="report-count"> Lihat Siswa/i</span></a>
                         </div>
                         <div class="inner-card-icon bg-danger">
                           <i class="icon-user"></i>
@@ -96,9 +96,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results3 = $query3->fetchAll(PDO::FETCH_OBJ);
                           $totnotice = $query3->rowCount();
                           ?>
-                          <span class="report-title">Total Class Notice</span>
+                          <span class="report-title">Pengumuman Kelas</span>
                           <h4><?php echo htmlentities($totnotice); ?></h4>
-                          <a href="manage-notice.php"><span class="report-count"> View Notices</span></a>
+                          <a href="manage-notice.php"><span class="report-count"> Lihat Pengumuman</span></a>
                         </div>
                         <div class="inner-card-icon bg-warning">
                           <i class="icon-doc"></i>
@@ -113,9 +113,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results4 = $query4->fetchAll(PDO::FETCH_OBJ);
                           $totpublicnotice = $query4->rowCount();
                           ?>
-                          <span class="report-title">Total Public Notice</span>
+                          <span class="report-title">Pengumuman Publik</span>
                           <h4><?php echo htmlentities($totpublicnotice); ?></h4>
-                          <a href="manage-public-notice.php"><span class="report-count"> View PublicNotices</span></a>
+                          <a href="manage-public-notice.php"><span class="report-count"> Lihat Pengumuman</span></a>
                         </div>
                         <div class="inner-card-icon bg-primary">
                           <i class="icon-doc"></i>
