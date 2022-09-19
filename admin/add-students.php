@@ -53,15 +53,15 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         $query->execute();
         $LastInsertId = $dbh->lastInsertId();
         if ($LastInsertId > 0) {
-          echo '<script>alert("Student has been added.")</script>';
+          echo '<script>alert("Siswa Telah Ditambahkan.")</script>';
           echo "<script>window.location.href ='add-students.php'</script>";
         } else {
-          echo '<script>alert("Something Went Wrong. Please try again")</script>';
+          echo '<script>alert("Ada yang salah, Tolong coba lagi.")</script>';
         }
       }
     } else {
 
-      echo "<script>alert('Username or Student Id  already exist. Please try again');</script>";
+      echo "<script>alert('NIS Sudah Terpakai. Tolong Gunakan NIS yang lain.');</script>";
     }
   }
 ?>
@@ -70,7 +70,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|| Add Students</title>
+    <title>Tambah Siswa</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -99,11 +99,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Add Students </h3>
+              <h3 class="page-title"> Tambah Siswa </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Add Students</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Tambah Siswa</li>
                 </ol>
               </nav>
             </div>
@@ -112,22 +112,22 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Add Students</h4>
+                    <h4 class="card-title" style="text-align: center;">Data Siswa</h4>
 
                     <form class="forms-sample" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
-                        <label for="exampleInputName1">Student Name</label>
+                        <label for="exampleInputName1">Nama Siswa</label>
                         <input type="text" name="stuname" value="" class="form-control" required='true'>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Student Email</label>
+                        <label for="exampleInputName1">Email Siswa</label>
                         <input type="text" name="stuemail" value="" class="form-control" required='true'>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Student Class</label>
+                        <label for="exampleInputEmail3">Kelas</label>
                         <select name="stuclass" class="form-control" required='true'>
-                          <option value="">Select Class</option>
+                          <option value="">Pilih Kelas</option>
                           <?php
 
                           $sql2 = "SELECT * from    tblclass ";
@@ -142,57 +142,57 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Gender</label>
+                        <label for="exampleInputName1">Jenis Kelamin</label>
                         <select name="gender" value="" class="form-control" required='true'>
-                          <option value="">Choose Gender</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
+                          <option value="">Pilih Jenis Kelamin</option>
+                          <option value="Laki-Laki">Laki-Laki</option>
+                          <option value="Perempuan">Perempuan</option>
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Date of Birth</label>
+                        <label for="exampleInputName1">Tanggal Lahir</label>
                         <input type="date" name="dob" value="" class="form-control" required='true'>
                       </div>
 
                       <div class="form-group">
-                        <label for="exampleInputName1">Student ID</label>
+                        <label for="exampleInputName1">NIS</label>
                         <input type="text" name="stuid" value="" class="form-control" required='true'>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Student Photo</label>
+                        <label for="exampleInputName1">Foto Siswa</label>
                         <input type="file" name="image" value="" class="form-control" required='true'>
                       </div>
-                      <h3>Parents/Guardian's details</h3>
+                      <h3>Data Orangtua Siswa</h3>
                       <div class="form-group">
-                        <label for="exampleInputName1">Father's Name</label>
+                        <label for="exampleInputName1">Nama Ayah</label>
                         <input type="text" name="fname" value="" class="form-control" required='true'>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Mother's Name</label>
+                        <label for="exampleInputName1">Nama Ibu</label>
                         <input type="text" name="mname" value="" class="form-control" required='true'>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Contact Number</label>
+                        <label for="exampleInputName1">Nomor Telepon</label>
                         <input type="text" name="connum" value="" class="form-control" required='true' maxlength="13" pattern="[0-9]+">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Alternate Contact Number</label>
+                        <label for="exampleInputName1">Nomor Alternatif</label>
                         <input type="text" name="altconnum" value="" class="form-control" required='true' maxlength="13" pattern="[0-9]+">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Address</label>
+                        <label for="exampleInputName1">Alamat</label>
                         <textarea name="address" class="form-control" required='true'></textarea>
                       </div>
-                      <h3>Login details</h3>
+                      <h3>Data Login</h3>
                       <div class="form-group">
-                        <label for="exampleInputName1">User Name</label>
+                        <label for="exampleInputName1">Username</label>
                         <input type="text" name="uname" value="" class="form-control" required='true'>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputName1">Password</label>
                         <input type="Password" name="password" value="" class="form-control" required='true'>
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2" name="submit">Add</button>
+                      <button type="submit" class="btn btn-primary mr-2" name="submit">Tambah</button>
 
                     </form>
                   </div>
