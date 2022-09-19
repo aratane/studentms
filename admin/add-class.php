@@ -15,10 +15,10 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $query->execute();
     $LastInsertId = $dbh->lastInsertId();
     if ($LastInsertId > 0) {
-      echo '<script>alert("Class has been added.")</script>';
+      echo '<script>alert("Kelas sukses ditambahkan.")</script>';
       echo "<script>window.location.href ='add-class.php'</script>";
     } else {
-      echo '<script>alert("Something Went Wrong. Please try again")</script>';
+      echo '<script>alert("Ada yang salah, Tolong coba lagi.")</script>';
     }
   }
 ?>
