@@ -95,6 +95,10 @@ if (isset($_POST['login'])) {
                   <a href="forgot-password.php" class="auth-link text-black">Lupa password?</a>
                 </div>
                 <div class="mb-2">
+                  <a href="../loginchoose.php" class="btn btn-block btn-facebook auth-form-btn">
+                    <i class="icon-social-home mr-2"></i>Pilih Role</a>
+                </div>
+                <div class="mb-2">
                   <a href="../index.php" class="btn btn-block btn-facebook auth-form-btn">
                     <i class="icon-social-home mr-2"></i>Kembali Ke Website </a>
                 </div>
