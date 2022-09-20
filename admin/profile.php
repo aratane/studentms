@@ -18,7 +18,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $query->bindParam(':aid', $adminid, PDO::PARAM_STR);
     $query->execute();
 
-    echo '<script>alert("Your profile has been updated")</script>';
+    echo '<script>alert("Profil Kamu Berhasil Di Perbaharui.")</script>';
     echo "<script>window.location.href ='profile.php'</script>";
   }
 ?>
@@ -27,7 +27,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Student Management System|| Profile</title>
+    <title>Profil</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -56,11 +56,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Admin Profile </h3>
+              <h3 class="page-title"> Admin Profil </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Admin Profile</li>
+                  <li class="breadcrumb-item active" aria-current="page">Admin Profil</li>
                 </ol>
               </nav>
             </div>
@@ -69,7 +69,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Admin Profile</h4>
+                    <h4 class="card-title" style="text-align: center;">Data Admin</h4>
 
                     <form class="forms-sample" method="post">
                       <?php
@@ -82,23 +82,23 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                       if ($query->rowCount() > 0) {
                         foreach ($results as $row) {               ?>
                           <div class="form-group">
-                            <label for="exampleInputName1">Admin Name</label>
+                            <label for="exampleInputName1">Nama</label>
                             <input type="text" name="adminname" value="<?php echo $row->AdminName; ?>" class="form-control" required='true'>
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputEmail3">User Name</label>
+                            <label for="exampleInputEmail3">Username</label>
                             <input type="text" name="username" value="<?php echo $row->UserName; ?>" class="form-control" readonly="">
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputPassword4">Contact Number</label>
-                            <input type="text" name="mobilenumber" value="<?php echo $row->MobileNumber; ?>" class="form-control" maxlength='10' required='true' pattern="[0-9]+">
+                            <label for="exampleInputPassword4">Nomor Telepon</label>
+                            <input type="text" name="mobilenumber" value="<?php echo $row->MobileNumber; ?>" class="form-control" maxlength='13' required='true' pattern="[0-9]+">
                           </div>
                           <div class="form-group">
                             <label for="exampleInputCity1">Email</label>
                             <input type="email" name="email" value="<?php echo $row->Email; ?>" class="form-control" required='true'>
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputCity1">Admin Registration Date</label>
+                            <label for="exampleInputCity1">Tanggal Registrasi</label>
                             <input type="text" name="" value="<?php echo $row->AdminRegdate; ?>" readonly="" class="form-control">
                           </div><?php $cnt = $cnt + 1;
                               }
