@@ -14,7 +14,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $query->bindParam(':pagedes', $pagedes, PDO::PARAM_STR);
 
     $query->execute();
-    echo '<script>alert("About us has been updated")</script>';
+    echo '<script>alert("Data Berhasil Diubah.")</script>';
   }
 ?>
   <!DOCTYPE html>
@@ -90,7 +90,6 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         }
                       } ?>
                       <button type="submit" class="btn btn-primary mr-2" name="submit">Update</button>
-
                     </form>
                   </div>
                 </div>
