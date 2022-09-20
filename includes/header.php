@@ -1,35 +1,34 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>ISM WEBSITE</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
 <!--header-->
-<div class="header" id="home">
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"> </span>
-          <span class="icon-bar"> </span>
-          <span class="icon-bar"> </span>
-        </button>
-        <h1><a class="navbar-brand" href="index.php">SMS</a></h1>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-          <li><a href="index.php"><span data-hover="Home">Home</span></a></li>
-          <li><a href="about.php"><span data-hover="About">About</span></a></li>
-
-          <li><a href="contact.php"><span data-hover="Contact">Contact</span></a></li>
-          <li><a href="admin/login.php"><span data-hover="Contact">Admin</span></a></li>
-          <li><a href="user/login.php"><span data-hover="Shortcodes">Student</span></a></li>
-        </ul>
-        <div class="clearfix"> </div>
-      </div><!-- /.navbar-collapse -->
-      <!-- /.container-fluid -->
-
-  </nav>
-  <!--/script-->
-  <div class="clearfix"> </div>
-</div>
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#page-top">IGAPIN STUDENT MANAGEMENT</a>
+    <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Kembali</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <!-- Top Navigation -->
 
 <!--header-->
