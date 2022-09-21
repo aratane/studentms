@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile">
@@ -64,7 +65,7 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <span class="menu-title">Pengumuman Kelas</span>
-        <i class="icon-doc menu-icon"></i>
+        <i class="fa-solid fa-envelope menu-icon"></i>
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
@@ -76,7 +77,7 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#auth1" aria-expanded="false" aria-controls="auth">
         <span class="menu-title">Pengumuman Publik</span>
-        <i class="icon-doc menu-icon"></i>
+        <i class="fa-solid fa-bullhorn menu-icon"></i>
       </a>
       <div class="collapse" id="auth1">
         <ul class="nav flex-column sub-menu">
@@ -87,7 +88,7 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#auth2" aria-expanded="false" aria-controls="auth">
         <span class="menu-title">Halaman</span>
-        <i class="icon-doc menu-icon"></i>
+        <i class="fa-solid fa-pager menu-icon"></i>
       </a>
       <div class="collapse" id="auth2">
         <ul class="nav flex-column sub-menu">
