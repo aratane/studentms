@@ -72,15 +72,15 @@ if (isset($_POST['login'])) {
               <h6 class="font-weight-light">Silakan Login Untuk Masuk.</h6>
               <form class="pt-3" id="login" method="post" name="login">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="enter your username" required="true" name="username" value="<?php if (isset($_COOKIE["user_login"])) {
-                                                                                                                                                      echo $_COOKIE["user_login"];
-                                                                                                                                                    } ?>">
+                  <input type="text" class="form-control form-control-lg" placeholder="Masukkan Username" required="true" name="username" value="<?php if (isset($_COOKIE["user_login"])) {
+                                                                                                                                                    echo $_COOKIE["user_login"];
+                                                                                                                                                  } ?>">
                 </div>
                 <div class="form-group">
 
-                  <input type="password" class="form-control form-control-lg" placeholder="enter your password" name="password" required="true" value="<?php if (isset($_COOKIE["userpassword"])) {
-                                                                                                                                                          echo $_COOKIE["userpassword"];
-                                                                                                                                                        } ?>">
+                  <input type="password" class="form-control form-control-lg" placeholder="Masukkan Password" name="password" required="true" value="<?php if (isset($_COOKIE["userpassword"])) {
+                                                                                                                                                        echo $_COOKIE["userpassword"];
+                                                                                                                                                      } ?>">
                 </div>
                 <div class="mt-3">
                   <button class="btn btn-success btn-block loginbtn" name="login" type="submit">Login</button>

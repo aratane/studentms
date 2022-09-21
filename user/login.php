@@ -35,7 +35,7 @@ if (isset($_POST['login'])) {
     $_SESSION['login'] = $_POST['stuid'];
     echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
   } else {
-    echo "<script>alert('Invalid Details');</script>";
+    echo "<script>alert('Username atau Password Yang Anda Masukkan Salah.');</script>";
   }
 }
 
@@ -74,15 +74,15 @@ if (isset($_POST['login'])) {
               <h6 class="font-weight-light">Silahkan Login Untuk Masuk.</h6>
               <form class="pt-3" id="login" method="post" name="login">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="enter your student id or username" required="true" name="stuid" value="<?php if (isset($_COOKIE["user_login"])) {
-                                                                                                                                                                echo $_COOKIE["user_login"];
-                                                                                                                                                              } ?>">
+                  <input type="text" class="form-control form-control-lg" placeholder="Masukkan NIS atau Username" required="true" name="stuid" value="<?php if (isset($_COOKIE["user_login"])) {
+                                                                                                                                                          echo $_COOKIE["user_login"];
+                                                                                                                                                        } ?>">
                 </div>
                 <div class="form-group">
 
-                  <input type="password" class="form-control form-control-lg" placeholder="enter your password" name="password" required="true" value="<?php if (isset($_COOKIE["userpassword"])) {
-                                                                                                                                                          echo $_COOKIE["userpassword"];
-                                                                                                                                                        } ?>">
+                  <input type="password" class="form-control form-control-lg" placeholder="Masukkan Password" name="password" required="true" value="<?php if (isset($_COOKIE["userpassword"])) {
+                                                                                                                                                        echo $_COOKIE["userpassword"];
+                                                                                                                                                      } ?>">
                 </div>
                 <div class="mt-3">
                   <button class="btn btn-success btn-block loginbtn" name="login" type="submit">Login</button>

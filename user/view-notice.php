@@ -88,7 +88,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                         }
                       } else { ?>
                         <tr>
-                          <th colspan="2" style="color:red;">No Notice Found</th>
+                          <th colspan="2" style="color:red;">Tidak Ada Pengumuman</th>
                         </tr>
                       <?php } ?>
                     </table>
