@@ -31,7 +31,7 @@
     </div>
     <div class="card card__three">
       <div class="card__bg"></div>
-      <img class="card__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/3dr_howlcastle.png" />
+      <a href="teacher/login.php"><img class="card__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/3dr_howlcastle.png" /></a>
       <div class="card__text">
         <p class="card__title">TEACHER (Guru)</p>
       </div>

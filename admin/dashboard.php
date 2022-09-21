@@ -48,7 +48,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                     <div class="row">
                       <div class="col-md-12">
                         <div class="d-sm-flex align-items-baseline report-summary-header">
-                          <h5 class="font-weight-semibold">Ringkasan Laporan</h5> <span class="ml-auto">Updated Laporan</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
+                          <h5 class="font-weight-semibold">Ringkasan Laporan</h5> <span class="ml-auto">Update Laporan</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
                         </div>
                       </div>
                     </div>
