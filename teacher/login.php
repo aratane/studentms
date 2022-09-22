@@ -6,7 +6,7 @@ include('includes/dbconnection.php');
 if (isset($_POST['login'])) {
   $stuid = $_POST['stuid'];
   $password = md5($_POST['password']);
-  $sql = "SELECT StuID,ID,StudentClass FROM tblteacher WHERE (UserName=:stuid || StuID=:stuid) and Password=:password";
+  $sql = "SELECT StuID,ID,TeacherClass FROM tblteacher WHERE (UserName=:stuid || StuID=:stuid) and Password=:password";
   $query = $dbh->prepare($sql);
   $query->bindParam(':stuid', $stuid, PDO::PARAM_STR);
   $query->bindParam(':password', $password, PDO::PARAM_STR);
@@ -14,9 +14,10 @@ if (isset($_POST['login'])) {
   $results = $query->fetchAll(PDO::FETCH_OBJ);
   if ($query->rowCount() > 0) {
     foreach ($results as $result) {
+      $_SESSION['sturecmsaid'] = $result->ID;
       $_SESSION['sturecmsstuid'] = $result->StuID;
       $_SESSION['sturecmsuid'] = $result->ID;
-      $_SESSION['stuclass'] = $result->StudentClass;
+      $_SESSION['stuclass'] = $result->TeacherClass;
     }
 
     if (!empty($_POST["remember"])) {
@@ -74,7 +75,7 @@ if (isset($_POST['login'])) {
               <h6 class="font-weight-light">Silahkan Login Untuk Masuk.</h6>
               <form class="pt-3" id="login" method="post" name="login">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="Masukkan NIS atau Username" required="true" name="stuid" value="<?php if (isset($_COOKIE["user_login"])) {
+                  <input type="text" class="form-control form-control-lg" placeholder="Masukkan NIG atau Username" required="true" name="stuid" value="<?php if (isset($_COOKIE["user_login"])) {
                                                                                                                                                           echo $_COOKIE["user_login"];
                                                                                                                                                         } ?>">
                 </div>

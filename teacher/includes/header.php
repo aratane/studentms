@@ -1,7 +1,7 @@
  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
    <div class="navbar-brand-wrapper d-flex align-items-center">
      <a class="navbar-brand brand-logo" href="dashboard.php">
-       <strong style="color: white;">ISM</strong>
+       <strong style="color: white;">ISM [GURU]</strong>
      </a>
 
    </div>
@@ -18,7 +18,7 @@
     if ($query->rowCount() > 0) {
       foreach ($results as $row) {               ?>
        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->StudentName); ?> Selamat datang di ISM!</h5>
+         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->TeacherName); ?> Selamat datang di ISM!</h5>
          <ul class="navbar-nav navbar-nav-right ml-auto">
 
 
@@ -26,13 +26,13 @@
            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
 
-               <img class="img-xs rounded-circle ml-2" src="../admin/images/<?php echo $row->Image; ?>" alt="Profile image"> <span class="font-weight-normal"> <?php echo htmlentities($row->StudentName); ?> </span></a>
+               <img class="img-xs rounded-circle ml-2" src="../admin/images/<?php echo $row->Image; ?>" alt="Profile image"> <span class="font-weight-normal"> <?php echo htmlentities($row->TeacherName); ?> </span></a>
              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                <div class="dropdown-header text-center">
                  <img class="img-xs rounded-circle" src="../admin/images/<?php echo $row->Image; ?>" alt="Profile image">
 
-                 <p class="mb-1 mt-3"><?php echo htmlentities($row->StudentName); ?></p>
-                 <p class="font-weight-light text-muted mb-0"><?php echo htmlentities($row->StudentEmail); ?></p><?php $cnt = $cnt + 1;
+                 <p class="mb-1 mt-3"><?php echo htmlentities($row->TeacherName); ?></p>
+                 <p class="font-weight-light text-muted mb-0"><?php echo htmlentities($row->TeacherEmail); ?></p><?php $cnt = $cnt + 1;
                                                                                                                 }
                                                                                                               } ?>
                </div>
