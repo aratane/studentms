@@ -3,26 +3,20 @@
      <a class="navbar-brand brand-logo" href="dashboard.php">
        <strong style="color: white;">ISM [GURU]</strong>
      </a>
-
    </div>
    <?php
     $uid = $_SESSION['sturecmsuid'];
     $sql = "SELECT * from tblteacher where ID=:uid";
-
     $query = $dbh->prepare($sql);
     $query->bindParam(':uid', $uid, PDO::PARAM_STR);
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_OBJ);
-
     $cnt = 1;
     if ($query->rowCount() > 0) {
       foreach ($results as $row) {               ?>
        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->TeacherName); ?> Selamat datang di ISM!</h5>
          <ul class="navbar-nav navbar-nav-right ml-auto">
-
-
-
            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
 
@@ -32,9 +26,10 @@
                  <img class="img-xs rounded-circle" src="../admin/images/<?php echo $row->Image; ?>" alt="Profile image">
 
                  <p class="mb-1 mt-3"><?php echo htmlentities($row->TeacherName); ?></p>
-                 <p class="font-weight-light text-muted mb-0"><?php echo htmlentities($row->TeacherEmail); ?></p><?php $cnt = $cnt + 1;
-                                                                                                                }
-                                                                                                              } ?>
+                 <p class="font-weight-light text-muted mb-0"><?php echo htmlentities($row->TeacherEmail); ?></p>
+                 <?php $cnt = $cnt + 1;
+                  }
+                 } ?>
                </div>
                <a class="dropdown-item" href="student-profile.php"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile</a>
                <a class="dropdown-item" href="change-password.php"><i class="dropdown-item-icon icon-energy text-primary"></i> Setting</a>
