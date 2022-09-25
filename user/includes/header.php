@@ -18,7 +18,7 @@
     if ($query->rowCount() > 0) {
       foreach ($results as $row) {               ?>
        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->StudentName); ?> Selamat datang di ISM!</h5>
+         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo👋&nbsp;<a href="profile.php" style="color: red;"><?php echo htmlentities($row->StudentName); ?></a>&nbsp;Selamat Datang!</h5>
          <ul class="navbar-nav navbar-nav-right ml-auto">
 
 

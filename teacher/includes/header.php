@@ -15,7 +15,7 @@
     if ($query->rowCount() > 0) {
       foreach ($results as $row) {               ?>
        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->TeacherName); ?> Selamat datang di ISM!</h5>
+         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo👋&nbsp;<a href="profile.php" style="color: red;"><?php echo htmlentities($row->TeacherName); ?></a>&nbsp;Selamat Datang!</h5>
          <ul class="navbar-nav navbar-nav-right ml-auto">
            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -31,7 +31,7 @@
                   }
                  } ?>
                </div>
-               <a class="dropdown-item" href="student-profile.php"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile</a>
+               <a class="dropdown-item" href="teacher-profile.php"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile</a>
                <a class="dropdown-item" href="change-password.php"><i class="dropdown-item-icon icon-energy text-primary"></i> Setting</a>
                <a class="dropdown-item" href="logout.php"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
              </div>

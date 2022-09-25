@@ -58,7 +58,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                     <table border="1" class="table table-bordered mg-b-0">
                       <?php
                       $sid = $_SESSION['sturecmsstuid'];
-                      $sql = "SELECT tblteacher.TeacherName,tblteacher.TeacherEmail,tblteacher.TeacherClass,tblteacher.Gender,tblteacher.DOB,tblteacher.StuID,tblteacher.FatherName,tblteacher.MotherName,tblteacher.ContactNumber,tblteacher.AltenateNumber,tblteacher.Address,tblteacher.UserName,tblteacher.Password,tblteacher.Image,tblteacher.DateofAdmission,tblclass.ClassName,tblclass.Section from tblteacher join tblclass on tblclass.ID=tblteacher.TeacherClass where tblteacher.StuID=:sid";
+                      $sql = "SELECT tblteacher.TeacherName,tblteacher.TeacherEmail,tblteacher.Gender,tblteacher.DOB,tblteacher.StuID,tblteacher.ContactNumber,tblteacher.Address,tblteacher.UserName,tblteacher.Password,tblteacher.Image,tblteacher.DateofAdmission from tblteacher where tblteacher.StuID=:sid";
                       $query = $dbh->prepare($sql);
                       $query->bindParam(':sid', $sid, PDO::PARAM_STR);
                       $query->execute();

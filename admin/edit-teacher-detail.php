@@ -1,0 +1,173 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+if (strlen($_SESSION['sturecmsaid'] == 0)) {
+  header('location:logout.php');
+} else {
+  if (isset($_POST['submit'])) {
+    $stuname = $_POST['stuname'];
+    $stuemail = $_POST['stuemail'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $stuid = $_POST['stuid'];
+    $connum = $_POST['connum'];
+    $address = $_POST['address'];
+    $eid = $_GET['editid'];
+    $sql = "update tblteacher set TeacherName=:stuname,TeacherEmail=:stuemail,Gender=:gender,DOB=:dob,StuID=:stuid,ContactNumber=:connum,Address=:address where ID=:eid";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':stuname', $stuname, PDO::PARAM_STR);
+    $query->bindParam(':stuemail', $stuemail, PDO::PARAM_STR);
+    $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+    $query->bindParam(':dob', $dob, PDO::PARAM_STR);
+    $query->bindParam(':stuid', $stuid, PDO::PARAM_STR);
+    $query->bindParam(':connum', $connum, PDO::PARAM_STR);
+    $query->bindParam(':address', $address, PDO::PARAM_STR);
+    $query->bindParam(':eid', $eid, PDO::PARAM_STR);
+    $query->execute();
+    echo '<script>alert("Guru Berhasil Di Perbaharui.")</script>';
+  }
+
+?>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+
+    <title>Update Guru</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="css/style.css" />
+
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <?php include_once('includes/header.php'); ?>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <?php include_once('includes/sidebar.php'); ?>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Update Guru </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> Update Guru</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;">Data Guru</h4>
+
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                      <?php
+                      $eid = $_GET['editid'];
+                      $sql = "SELECT tblteacher.TeacherName,tblteacher.TeacherEmail,tblteacher.Gender,tblteacher.DOB,tblteacher.StuID,tblteacher.ContactNumber,tblteacher.Address,tblteacher.UserName,tblteacher.Password,tblteacher.Image,tblteacher.DateofAdmission from tblteacher where tblteacher.ID=:eid";
+                      $query = $dbh->prepare($sql);
+                      $query->bindParam(':eid', $eid, PDO::PARAM_STR);
+                      $query->execute();
+                      $results = $query->fetchAll(PDO::FETCH_OBJ);
+                      $cnt = 1;
+                      if ($query->rowCount() > 0) {
+                        foreach ($results as $row) {               ?>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Nama Guru</label>
+                            <input type="text" name="stuname" value="<?php echo htmlentities($row->TeacherName); ?>" class="form-control" required='true'>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Email Guru</label>
+                            <input type="text" name="stuemail" value="<?php echo htmlentities($row->TeacherEmail); ?>" class="form-control" required='true'>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Jenis Kelamin</label>
+                            <select name="gender" value="" class="form-control" required='true'>
+                              <option value="<?php echo htmlentities($row->Gender); ?>"><?php echo htmlentities($row->Gender); ?></option>
+                              <option value="Male">Laki-Laki</option>
+                              <option value="Female">Perempuan</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Tanggal Lahir</label>
+                            <input type="date" name="dob" value="<?php echo htmlentities($row->DOB); ?>" class="form-control" required='true'>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputName1">NIG</label>
+                            <input type="text" name="stuid" value="<?php echo htmlentities($row->StuID); ?>" class="form-control" readonly='true'>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Foto Guru</label>
+                            <img src="images/<?php echo $row->Image; ?>" width="100" height="100" value="<?php echo $row->Image; ?>"><a href="changeimage.php?editid=<?php echo $row->ID; ?>"> &nbsp; Edit Image</a>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Nomor Telepon</label>
+                            <input type="text" name="connum" value="<?php echo htmlentities($row->ContactNumber); ?>" class="form-control" required='true' maxlength="15" pattern="[0-9]+">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Alamat</label>
+                            <textarea name="address" class="form-control" required='true'><?php echo htmlentities($row->Address); ?></textarea>
+                          </div>
+                          <h3>Detail Login</h3>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Username</label>
+                            <input type="text" name="uname" value="<?php echo htmlentities($row->UserName); ?>" class="form-control" readonly='true'>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName1">Password</label>
+                            <input type="Password" name="password" value="<?php echo htmlentities($row->Password); ?>" class="form-control" readonly='true'>
+                          </div><?php $cnt = $cnt + 1;
+                              }
+                            } ?>
+                      <button type="submit" class="btn btn-primary mr-2" name="submit">Update</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <?php include_once('includes/footer.php'); ?>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/select2/select2.min.js"></script>
+    <script src="vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="js/typeahead.js"></script>
+    <script src="js/select2.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+
+  </html><?php }  ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['sturecmsaid'] == 0)) {
   header('location:logout.php');
@@ -8,12 +8,12 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
   // Code for deletion
   if (isset($_GET['delid'])) {
     $rid = intval($_GET['delid']);
-    $sql = "delete from tblstudent where ID=:rid";
+    $sql = "delete from tblteacher where ID=:rid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':rid', $rid, PDO::PARAM_STR);
     $query->execute();
     echo "<script>alert('Data Dihapus.');</script>";
-    echo "<script>window.location.href = 'manage-students.php'</script>";
+    echo "<script>window.location.href = 'manage-teacher.php'</script>";
   }
 ?>
   <!DOCTYPE html>
@@ -21,7 +21,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
   <head>
 
-    <title>Kelola Siswa</title>
+    <title>Kelola Guru</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -51,11 +51,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Kelola Siswa </h3>
+              <h3 class="page-title"> Kelola Guru </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Kelola Siswa</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Kelola Guru</li>
                 </ol>
               </nav>
             </div>
@@ -64,19 +64,20 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                 <div class="card">
                   <div class="card-body">
                     <div class="d-sm-flex align-items-center mb-4">
-                      <h4 class="card-title mb-sm-0">Data Pengelolaan Siswa</h4>
-                      <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> Lihat Semua Siswa</a>
+                      <h4 class="card-title mb-sm-0">Data Pengelolaan Guru</h4>
+                      <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> Lihat Semua Guru</a>
                     </div>
                     <div class="table-responsive border rounded p-1">
                       <table class="table">
                         <thead>
                           <tr>
                             <th class="font-weight-bold">NO</th>
-                            <th class="font-weight-bold">NIS</th>
-                            <th class="font-weight-bold">Kelas</th>
-                            <th class="font-weight-bold">Nama Siswa</th>
-                            <th class="font-weight-bold">Email Siswa</th>
+                            <th class="font-weight-bold">NIG</th>
+                            <th class="font-weight-bold">Nama Guru</th>
+                            <th class="font-weight-bold">Email Guru</th>
                             <th class="font-weight-bold">Tanggal Masuk</th>
+                            <th class="font-weight-bold">Aksi</th>
+
                           </tr>
                         </thead>
                         <tbody>
@@ -89,13 +90,13 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           // Formula for pagination
                           $no_of_records_per_page = 15;
                           $offset = ($pageno - 1) * $no_of_records_per_page;
-                          $ret = "SELECT ID FROM tblstudent";
+                          $ret = "SELECT ID FROM tblteacher";
                           $query1 = $dbh->prepare($ret);
                           $query1->execute();
                           $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
                           $total_rows = $query1->rowCount();
                           $total_pages = ceil($total_rows / $no_of_records_per_page);
-                          $sql = "SELECT tblstudent.StuID,tblstudent.ID as sid,tblstudent.StudentName,tblstudent.StudentEmail,tblstudent.DateofAdmission,tblclass.ClassName,tblclass.Section from tblstudent join tblclass on tblclass.ID=tblstudent.StudentClass LIMIT $offset, $no_of_records_per_page";
+                          $sql = "SELECT tblteacher.StuID,tblteacher.ID as sid,tblteacher.TeacherName,tblteacher.TeacherEmail,tblteacher.DateofAdmission from tblteacher LIMIT $offset, $no_of_records_per_page";
                           $query = $dbh->prepare($sql);
                           $query->execute();
                           $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -104,12 +105,16 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           if ($query->rowCount() > 0) {
                             foreach ($results as $row) {               ?>
                               <tr>
+
                                 <td><?php echo htmlentities($cnt); ?></td>
                                 <td><?php echo htmlentities($row->StuID); ?></td>
-                                <td><?php echo htmlentities($row->ClassName); ?> <?php echo htmlentities($row->Section); ?></td>
-                                <td><?php echo htmlentities($row->StudentName); ?></td>
-                                <td><?php echo htmlentities($row->StudentEmail); ?></td>
+                                <td><?php echo htmlentities($row->TeacherName); ?></td>
+                                <td><?php echo htmlentities($row->TeacherEmail); ?></td>
                                 <td><?php echo htmlentities($row->DateofAdmission); ?></td>
+                                <td>
+                                  <div><a href="edit-teacher-detail.php?editid=<?php echo htmlentities($row->sid); ?>"><i class="icon-eye"></i></a>
+                                    || <a href="manage-teacher.php?delid=<?php echo ($row->sid); ?>" onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?');"> <i class="icon-trash"></i></a></div>
+                                </td>
                               </tr><?php $cnt = $cnt + 1;
                                   }
                                 } ?>

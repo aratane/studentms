@@ -6,7 +6,7 @@ include('includes/dbconnection.php');
 if (isset($_POST['login'])) {
   $stuid = $_POST['stuid'];
   $password = md5($_POST['password']);
-  $sql = "SELECT StuID,ID,TeacherClass FROM tblteacher WHERE (UserName=:stuid || StuID=:stuid) and Password=:password";
+  $sql = "SELECT StuID,ID FROM tblteacher WHERE (UserName=:stuid || StuID=:stuid) and Password=:password";
   $query = $dbh->prepare($sql);
   $query->bindParam(':stuid', $stuid, PDO::PARAM_STR);
   $query->bindParam(':password', $password, PDO::PARAM_STR);
@@ -17,7 +17,6 @@ if (isset($_POST['login'])) {
       $_SESSION['sturecmsaid'] = $result->ID;
       $_SESSION['sturecmsstuid'] = $result->StuID;
       $_SESSION['sturecmsuid'] = $result->ID;
-      $_SESSION['stuclass'] = $result->TeacherClass;
     }
 
     if (!empty($_POST["remember"])) {
