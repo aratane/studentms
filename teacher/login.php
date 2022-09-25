@@ -6,7 +6,7 @@ include('includes/dbconnection.php');
 if (isset($_POST['login'])) {
   $stuid = $_POST['stuid'];
   $password = md5($_POST['password']);
-  $sql = "SELECT StuID,ID,StudentClass FROM tblteacher WHERE (UserName=:stuid || StuID=:stuid) and Password=:password";
+  $sql = "SELECT StuID,ID FROM tblteacher WHERE (UserName=:stuid || StuID=:stuid) and Password=:password";
   $query = $dbh->prepare($sql);
   $query->bindParam(':stuid', $stuid, PDO::PARAM_STR);
   $query->bindParam(':password', $password, PDO::PARAM_STR);
@@ -14,9 +14,9 @@ if (isset($_POST['login'])) {
   $results = $query->fetchAll(PDO::FETCH_OBJ);
   if ($query->rowCount() > 0) {
     foreach ($results as $result) {
+      $_SESSION['sturecmsaid'] = $result->ID;
       $_SESSION['sturecmsstuid'] = $result->StuID;
       $_SESSION['sturecmsuid'] = $result->ID;
-      $_SESSION['stuclass'] = $result->StudentClass;
     }
 
     if (!empty($_POST["remember"])) {
@@ -42,9 +42,7 @@ if (isset($_POST['login'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <title>Halaman Login</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
@@ -74,15 +72,16 @@ if (isset($_POST['login'])) {
               <h6 class="font-weight-light">Silahkan Login Untuk Masuk.</h6>
               <form class="pt-3" id="login" method="post" name="login">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="Masukkan NIS atau Username" required="true" name="stuid" value="<?php if (isset($_COOKIE["user_login"])) {
-                                                                                                                                                          echo $_COOKIE["user_login"];
-                                                                                                                                                        } ?>">
+                  <input type="text" class="form-control form-control-lg" placeholder="Masukkan NIG atau Username" required="true" name="stuid" value="
+                  <?php if (isset($_COOKIE["user_login"])) {
+                  echo $_COOKIE["user_login"];
+                } ?>">
                 </div>
                 <div class="form-group">
-
-                  <input type="password" class="form-control form-control-lg" placeholder="Masukkan Password" name="password" required="true" value="<?php if (isset($_COOKIE["userpassword"])) {
-                                                                                                                                                        echo $_COOKIE["userpassword"];
-                                                                                                                                                      } ?>">
+                  <input type="password" class="form-control form-control-lg" placeholder="Masukkan Password" name="password" required="true" value="
+                  <?php if (isset($_COOKIE["userpassword"])) {
+                  echo $_COOKIE["userpassword"];
+                  } ?>">
                 </div>
                 <div class="mt-3">
                   <button class="btn btn-success btn-block loginbtn" name="login" type="submit">Login</button>
@@ -102,7 +101,6 @@ if (isset($_POST['login'])) {
                   <a href="../index.php" class="btn btn-block btn-facebook auth-form-btn">
                     <i class="icon-social-home mr-2"></i>Kembali Ke Website </a>
                 </div>
-
               </form>
             </div>
           </div>

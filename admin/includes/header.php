@@ -1,7 +1,7 @@
  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
    <div class="navbar-brand-wrapper d-flex align-items-center">
      <a class="navbar-brand brand-logo" href="dashboard.php">
-       <strong style="color: white;">ISM</strong>
+       <strong style="color: white;">ISM [PETUGAS]</strong>
      </a>
      <a class="navbar-brand brand-logo-mini" href="dashboard.php"><img src="images/logo-mini.svg" alt="logo" /></a>
    </div><?php
@@ -17,7 +17,7 @@
           if ($query->rowCount() > 0) {
             foreach ($results as $row) {               ?>
        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo <?php echo htmlentities($row->AdminName); ?> Selamat Datang!</h5>
+         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Hallo👋&nbsp;<a href="profile.php" style="color: red;"><?php echo htmlentities($row->AdminName); ?></a>&nbsp;Selamat Datang!</h5>
          <ul class="navbar-nav navbar-nav-right ml-auto">
            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">

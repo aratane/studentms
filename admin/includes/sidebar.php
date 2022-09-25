@@ -52,13 +52,15 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-        <span class="menu-title">Siswa/i</span>
+        <span class="menu-title">Siswa & Guru</span>
         <i class="icon-people menu-icon"></i>
       </a>
       <div class="collapse" id="ui-basic1">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="add-students.php">Tambah Siswa/i</a></li>
-          <li class="nav-item"> <a class="nav-link" href="manage-students.php">Kelola Siswa/i</a></li>
+          <li class="nav-item"> <a class="nav-link" href="add-students.php">Tambah Siswa</a></li>
+          <li class="nav-item"> <a class="nav-link" href="manage-students.php">Kelola Siswa</a></li>
+          <li class="nav-item"> <a class="nav-link" href="add-teacher.php">Tambah Guru</a></li>
+          <li class="nav-item"> <a class="nav-link" href="manage-teacher.php">Kelola Guru</a></li>
         </ul>
       </div>
     </li>
