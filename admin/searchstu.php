@@ -5,7 +5,7 @@ include('includes/dbconnection.php');
 if (strlen($_SESSION['sturecmsaid'] == 0)) {
   header('location:logout.php');
 } else {
-  // Code for deletion
+  // Code Untuk Menghapus
   if (isset($_GET['delid'])) {
     $rid = intval($_GET['delid']);
     $sql = "delete from tblstudent where ID=:rid";
@@ -20,34 +20,20 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
   <html lang="en">
 
   <head>
-
     <title>Pencarian Data Siswa</title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
     <link rel="stylesheet" href="./vendors/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="./vendors/chartist/chartist.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- End layout styles -->
-
   </head>
 
   <body>
     <div class="container-scroller">
-      <!-- partial:partials/_navbar.html -->
       <?php include_once('includes/header.php'); ?>
-      <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
         <?php include_once('includes/sidebar.php'); ?>
-        <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
@@ -69,22 +55,17 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         <br><br>
                         <input id="searchdata" type="text" name="searchdata" required="true" class="form-control" placeholder="Cari Menggunakan NIS">
                       </div>
-
                       <button type="submit" class="btn btn-primary" name="search" id="submit">Cari</button>
                       <br><br>
                     </form>
                     <div class="d-sm-flex align-items-center mb-4">
-
-
                       <?php
                       if (isset($_POST['search'])) {
-
                         $sdata = $_POST['searchdata'];
                       ?>
                         <h4 align="center">Hasil Pencarian Dengan NIS "<?php echo $sdata; ?>"</h4>
                     </div>
                     <div class="table-responsive border rounded p-1">
-
                       <table class="table">
                         <thead>
                           <tr>
@@ -95,7 +76,6 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                             <th class="font-weight-bold">Email Siswa</th>
                             <th class="font-weight-bold">Tanggal Masuk</th>
                             <th class="font-weight-bold">Aksi</th>
-
                           </tr>
                         </thead>
                         <tbody>
@@ -105,7 +85,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           } else {
                             $pageno = 1;
                           }
-                          // Formula for pagination
+                          // Code Untuk Navigasi Halaman
                           $no_of_records_per_page = 5;
                           $offset = ($pageno - 1) * $no_of_records_per_page;
                           $ret = "SELECT ID FROM tblstudent";
@@ -123,7 +103,6 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           if ($query->rowCount() > 0) {
                             foreach ($results as $row) {               ?>
                               <tr>
-
                                 <td><?php echo htmlentities($cnt); ?></td>
                                 <td><?php echo htmlentities($row->StuID); ?></td>
                                 <td><?php echo htmlentities($row->ClassName); ?> <?php echo htmlentities($row->Section); ?></td>
@@ -140,7 +119,6 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                 } else { ?>
                             <tr>
                               <td colspan="8">Tidak ada catatan yang ditemukan terhadap pencarian ini.</td>
-
                             </tr>
                         <?php }
                               } ?>
@@ -176,32 +154,18 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
               </div>
             </div>
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
           <?php include_once('includes/footer.php'); ?>
-          <!-- partial -->
         </div>
-        <!-- main-panel ends -->
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
     <script src="vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="./vendors/chart.js/Chart.min.js"></script>
     <script src="./vendors/moment/moment.min.js"></script>
     <script src="./vendors/daterangepicker/daterangepicker.js"></script>
     <script src="./vendors/chartist/chartist.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
     <script src="js/off-canvas.js"></script>
     <script src="js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
     <script src="./js/dashboard.js"></script>
-    <!-- End custom js for this page -->
   </body>
 
   </html><?php }  ?>
