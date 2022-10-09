@@ -81,7 +81,6 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                           <tr class="table-info">
                             <th>Pesan</th>
                             <td><?php echo $row->NoticeMsg; ?></td>
-
                           </tr>
 
                         <?php $cnt = $cnt + 1;

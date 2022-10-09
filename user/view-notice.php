@@ -58,7 +58,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                     <table border="1" class="table table-bordered mg-b-0">
                       <?php
                       $stuclass = $_SESSION['stuclass'];
-                      $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.NoticeTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.NoticeMsg,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId where tblnotice.ClassId=:stuclass";
+                      $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.NoticeTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.NoticeBy,tblnotice.NoticeMsg,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId where tblnotice.ClassId=:stuclass";
                       $query = $dbh->prepare($sql);
                       $query->bindParam(':stuclass', $stuclass, PDO::PARAM_STR);
                       $query->execute();
@@ -79,9 +79,12 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                             <td><?php echo $row->NoticeTitle; ?></td>
                           </tr>
                           <tr class="table-info">
+                            <th>Diumumkan Oleh :</th>
+                            <td><?php echo $row->NoticeBy; ?></td>
+                          </tr>
+                          <tr class="table-info">
                             <th>Pesan</th>
                             <td><?php echo $row->NoticeMsg; ?></td>
-
                           </tr>
 
                         <?php $cnt = $cnt + 1;

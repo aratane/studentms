@@ -9,11 +9,13 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $nottitle = $_POST['nottitle'];
     $classid = $_POST['classid'];
     $notmsg = $_POST['notmsg'];
-    $sql = "insert into tblnotice(NoticeTitle,ClassId,NoticeMsg)values(:nottitle,:classid,:notmsg)";
+    $notby = $_POST['notby'];
+    $sql = "insert into tblnotice(NoticeTitle,ClassId,NoticeMsg,NoticeBy)values(:nottitle,:classid,:notmsg,:notby)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':nottitle', $nottitle, PDO::PARAM_STR);
     $query->bindParam(':classid', $classid, PDO::PARAM_STR);
     $query->bindParam(':notmsg', $notmsg, PDO::PARAM_STR);
+    $query->bindParam(':notby', $notby, PDO::PARAM_STR);
     $query->execute();
     $LastInsertId = $dbh->lastInsertId();
     if ($LastInsertId > 0) {
@@ -86,7 +88,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           <option value="">Pilih Kelas</option>
                           <?php
 
-                          $sql2 = "SELECT * from    tblclass ";
+                          $sql2 = "SELECT * from tblclass";
                           $query2 = $dbh->prepare($sql2);
                           $query2->execute();
                           $result2 = $query2->fetchAll(PDO::FETCH_OBJ);
@@ -98,12 +100,29 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         </select>
                       </div>
                       <div class="form-group">
+                        <?php
+                        $sid = $_SESSION['sturecmsstuid'];
+                        $sql3 = "SELECT tblteacher.TeacherName from tblteacher where tblteacher.StuID=:sid";
+                        $query3 = $dbh->prepare($sql3);
+                        $query3->bindParam(':sid', $sid, PDO::PARAM_STR);
+                        $query3->execute();
+                        $results3 = $query3->fetchAll(PDO::FETCH_OBJ);
+                        $cnt = 1;
+                        if ($query->rowCount() > 0) {
+                          foreach ($results3 as $row3) {               ?>
+                            <label for="exampleInputName1">Diumumkan Oleh :</label>
+                            <select name="notby" class="form-control" required='true'>
+                              <option value="<?php echo htmlentities($row3->TeacherName); ?>"><?php echo htmlentities($row3->TeacherName); ?></option>
+                            </select>
+                        <?php $cnt = $cnt + 1;
+                          }
+                        } ?>
+                      </div>
+                      <div class="form-group">
                         <label for="exampleInputName1">Pesan Pengumuman</label>
                         <textarea name="notmsg" value="" class="form-control" required='true'></textarea>
                       </div>
-
                       <button type="submit" class="btn btn-primary mr-2" name="submit">Tambah</button>
-
                     </form>
                   </div>
                 </div>
