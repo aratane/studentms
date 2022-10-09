@@ -106,10 +106,16 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="search.php">
+      <a class="nav-link" data-toggle="collapse" href="#auth3" aria-expanded="false" aria-controls="auth">
         <span class="menu-title">Pencarian</span>
         <i class="icon-magnifier menu-icon"></i>
       </a>
+      <div class="collapse" id="auth3">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="searchstu.php"> Siswa </a></li>
+          <li class="nav-item"> <a class="nav-link" href="searchteac.php"> Guru </a></li>
+        </ul>
+      </div>
     </li>
     </li>
   </ul>
